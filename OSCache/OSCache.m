@@ -354,6 +354,17 @@
   }
 }
 
+-(NSArray *)copyOfAllKeys;
+{
+    [_lock lock];
+    NSMutableArray __block *copiedKeys = [[NSMutableArray alloc] init];
+    [_cache enumerateKeysAndObjectsUsingBlock:^(id key, OSCacheEntry *entry, BOOL *stop) {
+        [copiedKeys addObject:[key copy]];
+    }];
+    [_lock unlock];
+    return copiedKeys;
+}
+
 //handle unimplemented methods
 
 - (BOOL)isKindOfClass:(Class)aClass

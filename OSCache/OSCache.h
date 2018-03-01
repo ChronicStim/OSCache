@@ -42,6 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (id)objectForKeyedSubscript:(KeyType <NSCopying>)key;
 - (void)setObject:(ObjectType)obj forKeyedSubscript:(KeyType <NSCopying>)key;
 - (void)enumerateKeysAndObjectsUsingBlock:(void (^)(KeyType key, ObjectType obj, BOOL *stop))block;
+-(NSArray *)copyOfAllKeys;
 
 @end
 
