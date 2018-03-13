@@ -354,7 +354,7 @@
   }
 }
 
--(NSArray *)copyOfAllKeys;
+-(NSArray *)privateCopyOfAllKeys;
 {
     [_lock lock];
     NSMutableArray __block *copiedKeys = [[NSMutableArray alloc] init];
@@ -416,5 +416,9 @@
 - (NSUInteger)countByEnumeratingWithState:(__unused NSFastEnumerationState *)state
                                   objects:(__unused __unsafe_unretained id [])buffer
                                     count:(__unused NSUInteger)len { return 0; }
+-(NSArray *)copyOfAllKeys;
+{
+    return [(OSCache_Private *)self privateCopyOfAllKeys];
+}
 
 @end
